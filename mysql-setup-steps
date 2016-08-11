@@ -29,3 +29,7 @@ $ sudo /usr/bin/mysql_secure_installation
 # If you get an error during that process you can add this to the my.cnf file mentioned above
 # skip-grant-tables
 
+Changing a password in mysql
+$ mysql -u root p
+mysql> SET PASSWORD = PASSWORD('new_password');
+
