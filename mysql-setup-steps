@@ -45,7 +45,7 @@ Configure/Setup mySQL
 
 # ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib /mysql/mysql.sock' (111)
 
-# This is on Redhat
+# This is on Redhat 5.6.31
 $ vi /usr/my.cnf 
 # On Centos
 $ vi /etc/my.cnf
@@ -59,6 +59,7 @@ socket = /var/lib/mysql/mysql.sock
 $ sudo /usr/bin/mysql_secure_installation
 
 # If you get an error during that process you can add this to the my.cnf file mentioned above
+# Also for version MySql 5.6.31
 # skip-grant-tables
 
 Changing a password in mysql
