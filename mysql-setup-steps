@@ -66,3 +66,11 @@ Changing a password in mysql
 $ mysql -u root p
 mysql> SET PASSWORD = PASSWORD('new_password');
 
+# How To Completely Removing MySQL Server in CentOS
+
+$ rpm -qa | grep mysql
+# or
+$ yum list installed | grep mysql
+$ yum remove mysql-client mysql-server mysql-common mysql-devel
+$ rm -rf /var/lib/mysql/
+$ rm -rf /etc/my.cnf
