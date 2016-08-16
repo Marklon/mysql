@@ -59,12 +59,21 @@ Configure/Setup mySQL
 
 
   7.  Change the port of that mySQL is running on and restart the process.
-
-
+      
+      # Disable SeLinux
+      $ vi /etc/sysconfig/selinux
+        SELINUX=disabled
+      
+      $ vi /etc/my.cnf
+      # Change Port 
+      port = 3360
+      
+      # Restart the computer (for Disabling SeLiux)
+      $ init 6
 
 
   8.  Confirm that you can still view your database remotely.
-
+      # Confirmed
 
 
 
