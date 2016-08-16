@@ -71,6 +71,6 @@ mysql> SET PASSWORD = PASSWORD('new_password');
 $ rpm -qa | grep mysql
 # or
 $ yum list installed | grep mysql
-$ yum remove mysql-client mysql-server mysql-common mysql-devel
+$ yum remove MySQL-devel, MySQL-client, MySQL-shared-compat, MySQL-server, MySQL-test, MySQL-shared, MySQL-embedded
 $ rm -rf /var/lib/mysql/
 $ rm -rf /etc/my.cnf
