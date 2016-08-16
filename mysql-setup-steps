@@ -41,6 +41,33 @@ Configure/Setup mySQL
 
 ********************************************Troubleshooting and Bonus Commands******************************************
 
+# Creating a user in mysql
+> CREATE USER 'mbills'@'localhost' IDENTIFIED BY 'some_pass';
+
+# List current users for the database
+> SELECT User FROM mysql.user;
+
+
+# creating a  database in mysql
+> CREATE DATABASE shop;
+
+# granted privileges to a database for a new user in mysql
+> GRANT ALL PRIVILEGES ON databasename.* TO 'mbills'@'localhost';
+
+
+# Importing a file into Mysql
+> source/file/location yourfile.sql
+
+# Alternatively you can pipe the data into mysql from the command line:
+$ mysql < yourfile.sql
+
+# If the file doesn't specify a database then you will also need to add that:
+> mysql db_name < yourfile.sql
+
+# If you have a password for your dB then
+$ mysql -u <username> -p <DBName> < yourfile.sql
+
+
 # If you receive a socket error when starting mysql, the solution is
 
 # ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib /mysql/mysql.sock' (111)
