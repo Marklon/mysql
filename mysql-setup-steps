@@ -11,7 +11,7 @@ Configure/Setup mySQL
 
 # Sources
 
-# How To Install Linux, Apache, MySQL, PHP (LAMP) stack On CentOS 6
+# How To Install Linux, Apache, MySQL, PHP (LAMP) stack On CentOS 7
 # https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-centos-7
 
 # How to Install Latest MySQL 5.7.9 on RHEL/CentOS 7/6/5 and Fedora 23/22/21
@@ -19,8 +19,7 @@ Configure/Setup mySQL
 
 
  1. Install and Start mySQL
-    # http://downloads.mysql.com/archives/community/
-    # wget -bqc http://version-you-would-like-to-install
+    # sudo yum install mariadb-server mariadb
 
 
   2. Configure mySQl to auto restart on boot
@@ -70,7 +69,7 @@ Configure/Setup mySQL
 
 
 
-********************************************Troubleshooting and Bonus Commands******************************************
+******************************************** Troubleshooting and Bonus Commands ******************************************
 # Good mysql Tutorial Commands
 # https://www.digitalocean.com/community/tutorials/a-basic-mysql-tutorial
 
