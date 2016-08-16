@@ -1,71 +1,79 @@
 Configure/Setup mySQL
 
-  1. Install and Start mySQL
-  2. Configure mySQl to auto restart on boot
+  1.  Install and Start mySQL
+  2.  Configure mySQl to auto restart on boot
   3.  Create a User within mySQL
-  4.  FIgure out how to import the sql file data from: linux_projects.sql
-  5.  Figure out how to make a change to Update the record from wp_posts that has a post_date of "2011-07-30 07:35:15" 
-  6.  Backup the database to a file name of your choosing 
-  7.  Give the backup to another team member 
-  8.  Have that team member import the backup
-  9.  Translate the tutorial to Centos 7 for https://www.digitalocean.com/community/tutorials/how-to-set-up-an-apache-mysql-and-python-lamp-server-without-frameworks-on-ubuntu-14-04
-  10.  Remember that record from wp_posts that has a post_date of:  "2011-07-30 07:35:15"  ? 
-  11.  Create a python script called one_record.py on your web server and ensure that it will print "Hello Brian T. " 
-  12.  Using the tutorial from above figure out how to change the file one_record.py to  JUST print that ONE record when you visit the page 
+  4.  Create a database
+  5.  Figure out how to import the sql file data from: linux_projects.sql
+  6.  Configure DbViz or Sequel Pro to view the information in your Database remotely
+  7.  Change the port of that mySQL is running on and restart the process.
+  8.  Confirm that you can still view your database remotely.
 
-
- 1. Install and Start mySQL
-  # http://downloads.mysql.com/archives/community/
-  # wget -bqc http://version-you-would-like-to-install
-
-
-  2. Configure mySQl to auto restart on boot
-  $ systemctl enable mysql
-
-  3.  Create a User within mySQL
-  $ mysql -u root -p
-  > grant all privileges on test.* to mbills@localhost identified by 'password_goes_here';
-  # Creating a user and granting permission to a database for that user
-
-  
 # Sources
 
 # How To Install Linux, Apache, MySQL, PHP (LAMP) stack On CentOS 6
-# https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-centos-6
+# https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-centos-7
 
 # How to Install Latest MySQL 5.7.9 on RHEL/CentOS 7/6/5 and Fedora 23/22/21
 # http://www.tecmint.com/install-latest-mysql-on-rhel-centos-and-fedora/
+
+
+ 1. Install and Start mySQL
+    # http://downloads.mysql.com/archives/community/
+    # wget -bqc http://version-you-would-like-to-install
+
+
+  2. Configure mySQl to auto restart on boot
+    $ systemctl enable mysql
+
+  3.  Create a User within mySQL
+
+    > CREATE USER 'mbills'@'localhost' IDENTIFIED BY 'some_pass';
+  
+    # List current users for the database
+    > SELECT User FROM mysql.user;
+
+  4.  Create a database
+
+    > CREATE DATABASE databasename;
+
+
+  5.  Figure out how to import the sql file data from: linux_projects.sql
+  
+     # If you have a password for your dB then
+      $ mysql -u <username> -p <DBName> < /location/of/yourfile.sql
+       
+      > source /location/of/sqlyourfile.sql
+
+      # Alternatively you can pipe the data into mysql from the command line:
+      $ mysql < yourfile.sql
+
+      # If the file doesn't specify a database then you will also need to add that:
+      > mysql db_name < yourfile.sql
+
+
+  6.  Configure DbViz or Sequel Pro to view the information in your Database remotely
+      $ mysql_secure_installation
+      # Grant Remote access to users
+      
+      > GRANT ALL PRIVILEGES ON *.* TO 'mbills'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+
+
+  7.  Change the port of that mySQL is running on and restart the process.
+
+
+
+
+  8.  Confirm that you can still view your database remotely.
+
 
 
 
 
 ********************************************Troubleshooting and Bonus Commands******************************************
 
-# Creating a user in mysql
-> CREATE USER 'mbills'@'localhost' IDENTIFIED BY 'some_pass';
-
-# List current users for the database
-> SELECT User FROM mysql.user;
-
-
-# creating a  database in mysql
-> CREATE DATABASE shop;
-
 # granted privileges to a database for a new user in mysql
 > GRANT ALL PRIVILEGES ON databasename.* TO 'mbills'@'localhost';
-
-
-# Importing a file into Mysql
-> source/file/location yourfile.sql
-
-# Alternatively you can pipe the data into mysql from the command line:
-$ mysql < yourfile.sql
-
-# If the file doesn't specify a database then you will also need to add that:
-> mysql db_name < yourfile.sql
-
-# If you have a password for your dB then
-$ mysql -u <username> -p <DBName> < yourfile.sql
 
 
 # If you receive a socket error when starting mysql, the solution is
