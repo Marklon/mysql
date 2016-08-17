@@ -87,6 +87,11 @@ Configure/Setup mySQL
 # Update password for user
 > update user set password=PASSWORD('password') where user='mbills';
 
+# MySQL 5.7.5 and earlier:
+> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('MyNewPass');
+
+
+
 
 # granted privileges to a database for a new user in mysql
 > GRANT ALL PRIVILEGES ON databasename.* TO 'mbills'@'localhost';
