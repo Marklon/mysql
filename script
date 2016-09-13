@@ -15,7 +15,10 @@ echo “Now Installing PhP”
 
 sudo yum -y install php php-mysql
 
+sudo yum -y install firewalld
+
 echo “Setting firewall rules”
+
 
 sudo firewall-cmd --permanent --zone=public --add-service=http
 sudo firewall-cmd --permanent --zone=public --add-service=https
