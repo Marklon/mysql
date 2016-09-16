@@ -34,4 +34,6 @@ wait
 
 echo “Set a password for MariaDB”
 
-sudo mysql_secure_installation
+#sudo mysql_secure_installation
+
+exit 0
