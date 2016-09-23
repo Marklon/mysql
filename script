@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -xev 
 
 echo “Installing MariaDB”
 
@@ -15,10 +15,15 @@ echo “Now Installing PhP”
 
 sudo yum -y install php php-mysql
 
+echo “Now Installing FirewallD”
+
 sudo yum -y install firewalld
 
-echo “Setting firewall rules”
+wait
 
+systemctl start firewalld
+
+echo “Setting firewall rules”
 
 sudo firewall-cmd --permanent --zone=public --add-service=http
 sudo firewall-cmd --permanent --zone=public --add-service=https
