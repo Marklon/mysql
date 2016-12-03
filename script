@@ -1,5 +1,16 @@
 #!/bin/bash -xev 
 
+#########################################################################################################
+#
+# Name mysql.sh
+#
+# Script to auto install the mysql database service, confuration of users must be done manually @ this time
+# Author: Mark B.
+# December 3 2016
+#########################################################################################################
+
+
+
 echo “Installing MariaDB”
 
 sudo yum -y install mariadb-server mariadb
